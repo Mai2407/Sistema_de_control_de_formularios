@@ -1,0 +1,78 @@
+{% extends 'barra.html' %}
+
+{% block content %}
+<!--------------------------------------------------- Container --------------------------------------------------->
+    <div class="container_f">
+        <div class="form__top">
+            <h2>Formulario para<span> Registro</span></h2>
+            <form class="form__reg" action="/date_in/" method="POST">
+                {% csrf_token %}
+                {{ form }}
+                <input class="input" name="Nombre" type="text" placeholder="&#128100; Nombres" required autofocus>
+                <input class="input" name="Apellido" type="text" placeholder=" Apellidos" required>
+                <input class="input" name="Cedula" type="text" placeholder="&#127380; Cedula" required>
+                <input class="input" name="Direccion" type="text" placeholder=" Direccion" required>
+                <input class="input" name="Colegio_Electoral" type="text" placeholder=" Colegio Electoral" required>
+                <select class="input" name="Centro_De_Votacion" type="text" placeholder=" Centro De Votacion" required>
+                    <option>Seleccione Centro De Votacion</option>
+                    <option value="Escula Primaria A">Escula Primaria A</option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                </select>
+                <select class="input" name="Sexo" required>
+                    <option>Seleccione Sexo</option>
+                    <option value="FEMENINO">FEMENINO</option>
+                    <option value="MASCULINO">MASCULINO</option>
+                </select>
+                <input class="input" name="Telefono" type="tel" placeholder="&#x1f4de; Telefono" required>
+                <input class="input" name="Email" type="email" placeholder="&#9993; Email" required>
+                <input class="input" name="Edad" type="text" placeholder=" Edad" required>
+                <select class="input" name="Sector" required>
+                    <option value="">Seleccione Sector</option>
+                    <option value="Los Tomates">Los Tomates</option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                </select>
+                <input style="border-radius: 15px;" class="btn btn-success" type="submit" value="Enviar">
+                <input style="border-radius: 15px;" class="btn btn-danger" type="reset" value="Borrar">
+            </form>
+        </div>
+
+
+<!--------------------------------------------------- END Container --------------------------------------------------->
+</body>
+{% endblock %}  
