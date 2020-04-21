@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import PersonasForm
 from django.db import IntegrityError
 from django.shortcuts import render, get_object_or_404
-
+from django.db.models import Q
 
 
 # Create your views here.
@@ -49,19 +49,19 @@ def date_in(request):
 
     if form.is_valid():
 
-       instance = form.save(commit=False)
+        instance = form.save(commit=False)
 
-       instance.user = request.user
+        instance.user = request.user
 
-       instance.save()
+        instance.save()
 
-       form.clean()
+        form.clean()
 
-       context = {
-                'form': form
+        context = {
+            'form': form
         }
 
-       return render(request, 'gracias.html', context)
+        return render(request, 'gracias.html', context)
 
     else:
 
@@ -75,23 +75,26 @@ def date_in(request):
 # Permite mostrar los datos de los formularios mandados la base de datos
 def personas_datos(request):
 
-     queryset = Personas.objects.all()
+    queryset = Personas.objects.all()
 
-     context = {
+    context = {
         'object_list': queryset,
 
-     }
+    }
 
-     return render(request, 'registro.html', context)
+    return render(request, 'registro.html', context)
 
 # Permite mostrar los datos de los formularios buscados en la base de datos
+
+
 def Looking_For_Person(request):
 
     if request.GET['prs']:
 
         persona = request.GET['prs']
 
-        obj = Personas.objects.filter(Nombre__icontains=persona)
+        obj = Personas.objects.filter(
+            Q(Nombre__icontains=persona) | Q(Apellido__icontains=persona))
 
         context = {
             'buscado': obj,
@@ -103,22 +106,21 @@ def Looking_For_Person(request):
     else:
 
         return HttpResponseRedirect('/registro/')
-        
+
 
 # Permite eliminar los datos por id de los formularios buscados en la base de datos
 def delete(request, id):
 
     context = {}
-    
+
     persona = get_object_or_404(Personas, id=id)
 
     if request.method == 'POST':
-       
-      persona.delete()
 
-      return HttpResponseRedirect('/registro/')
+        persona.delete()
 
-   
+        return HttpResponseRedirect('/registro/')
+
     return render(request, 'delete.html', context)
 
 
@@ -130,25 +132,25 @@ def update(request, id):
     form = PersonasForm(request.POST or None, instance=obj)
 
     context = {
-        'form' : form
+        'form': form
     }
 
     if form.is_valid():
 
-         obj = form.save(commit=False)
+        obj = form.save(commit=False)
 
-         obj.user = request.user
+        obj.user = request.user
 
-         obj.save()
+        obj.save()
 
-         form.clean()
+        form.clean()
 
-         return HttpResponseRedirect('/registro/')
+        return HttpResponseRedirect('/registro/')
 
     else:
 
         context = {
-            'form':form
-        }  
+            'form': form
+        }
 
-        return render(request, 'update.html', context)  
+        return render(request, 'update.html', context)

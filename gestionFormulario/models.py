@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+
 class Personas(models.Model):
     user = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
     Nombre = models.CharField(max_length=50)

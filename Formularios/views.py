@@ -54,6 +54,7 @@ def error_datos(request):
 
     return render(request, 'error_datos.html')
 
+
 @login_required
 def eliminar(request):
 

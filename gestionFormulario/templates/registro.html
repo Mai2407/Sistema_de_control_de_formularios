@@ -1,157 +1,157 @@
 {% extends 'barra.html' %}
 
 {% block content %}
- <!--------------------------------------------------- TABLA --------------------------------------------------->
-   <div class="conteiner_a">
-    <table class="table">
-        <form>
-            <thead>
-                <tr>
-                   <!-- <th>#</th>-->
-                    <th>Nombre:</th>
-                    <th>Apellido:</th>
-                    <th>Cedula:</th>
-                    <th>Direccion:</th>
-                    <th>Colegio Electoral:</th>
-                    <th>Centro De Votacion:</th>
-                    <th>Sexo:</th>
-                    <th>Telefono:</th>
-                    <th>Email:</th>
-                    <th>Edad:</th>
-                    <th>Sector:</th>
-                    <th>User_Id:</th>
-            {% if object_list %}       
-                    <th>Update</th>
-                    <th>Remove</th>
+<!--------------------------------------------------- TABLA --------------------------------------------------->
+<div class="conteiner_a">
+  <table class="table">
+    <form>
+      <thead>
+        <tr>
+          <!-- <th>#</th>-->
+          <th>Nombre:</th>
+          <th>Apellido:</th>
+          <th>Cedula:</th>
+          <th>Direccion:</th>
+          <th>Colegio Electoral:</th>
+          <th>Centro De Votacion:</th>
+          <th>Sexo:</th>
+          <th>Telefono:</th>
+          <th>Email:</th>
+          <th>Edad:</th>
+          <th>Sector:</th>
+          <th>User_Id:</th>
+          {% if object_list %}
+          <th>Update</th>
+          <th>Remove</th>
 
-               </tr>
-               
-            {% else%} 
-                 
-            {% endif %}  
+        </tr>
 
-            </thead>
-          <tbody>    
-         
-                {% if object_list %}
+        {% else%}
 
-                {% for obj in object_list %} 
+        {% endif %}
 
-                <tr>
+      </thead>
+      <tbody>
 
-                  {% if request.user.is_superuser %}
+        {% if object_list %}
 
-                   <!--<td>{{obj.id}}</td>--->
-                    <td>{{obj.Nombre}}</td>
-                    <td>{{obj.Apellido}}</td>
-                    <td>{{obj.Cedula}}</td>
-                    <td>{{obj.Direccion}}</td>
-                    <td>{{obj.Colegio_Electoral}}</td>
-                    <td>{{obj.Centro_De_Votacion}}</td>
-                    <td>{{obj.Sexo}}</td>
-                    <td>{{obj.Telefono}}</td>
-                    <td>{{obj.Email}}</td>
-                    <td>{{obj.Edad}}</td>
-                    <td>{{obj.Sector}}</td>
-                    <td>{{obj.user}}</td>
-                    <td><a class="btn btn-info" href="{% url 'update' obj.id %}">Update</a></td>
-                    <td><a class="btn btn-danger" href="{% url 'delete' obj.id %}">Delete</a></td>
-               
-                </tr>
+        {% for obj in object_list %}
 
-                <tr>
+        <tr>
 
-                  {% elif obj.user == user %}
+          {% if request.user.is_superuser %}
 
-                  <!--<td>{{obj.id}}</td>--->
-                   <td>{{obj.Nombre}}</td>
-                   <td>{{obj.Apellido}}</td>
-                   <td>{{obj.Cedula}}</td>
-                   <td>{{obj.Direccion}}</td>
-                   <td>{{obj.Colegio_Electoral}}</td>
-                   <td>{{obj.Centro_De_Votacion}}</td>
-                   <td>{{obj.Sexo}}</td>
-                   <td>{{obj.Telefono}}</td>
-                   <td>{{obj.Email}}</td>
-                   <td>{{obj.Edad}}</td>
-                   <td>{{obj.Sector}}</td>
-                   <td>{{obj.user}}</td>
-                   <td><a class="btn btn-info" href="{% url 'update' obj.id %}">Update</a></td>
-                   <td><a class="btn btn-danger" href="{% url 'delete' obj.id %}">Delete</a></td>
-              
-                </tr>       
+          <!--<td>{{obj.id}}</td>--->
+          <td>{{obj.Nombre}}</td>
+          <td>{{obj.Apellido}}</td>
+          <td>{{obj.Cedula}}</td>
+          <td>{{obj.Direccion}}</td>
+          <td>{{obj.Colegio_Electoral}}</td>
+          <td>{{obj.Centro_De_Votacion}}</td>
+          <td>{{obj.Sexo}}</td>
+          <td>{{obj.Telefono}}</td>
+          <td>{{obj.Email}}</td>
+          <td>{{obj.Edad}}</td>
+          <td>{{obj.Sector}}</td>
+          <td>{{obj.user}}</td>
+          <td><a class="btn btn-info" href="{% url 'update' obj.id %}">Update</a></td>
+          <td><a class="btn btn-danger" href="{% url 'delete' obj.id %}">Delete</a></td>
 
-                {% endif %}
+        </tr>
 
-                {% endfor %}
+        <tr>
 
-                {% elif buscado %}
+          {% elif obj.user == user %}
 
-                {% for resultado in buscado %}
+          <!--<td>{{obj.id}}</td>--->
+          <td>{{obj.Nombre}}</td>
+          <td>{{obj.Apellido}}</td>
+          <td>{{obj.Cedula}}</td>
+          <td>{{obj.Direccion}}</td>
+          <td>{{obj.Colegio_Electoral}}</td>
+          <td>{{obj.Centro_De_Votacion}}</td>
+          <td>{{obj.Sexo}}</td>
+          <td>{{obj.Telefono}}</td>
+          <td>{{obj.Email}}</td>
+          <td>{{obj.Edad}}</td>
+          <td>{{obj.Sector}}</td>
+          <td>{{obj.user}}</td>
+          <td><a class="btn btn-info" href="{% url 'update' obj.id %}">Update</a></td>
+          <td><a class="btn btn-danger" href="{% url 'delete' obj.id %}">Delete</a></td>
 
-                {% if request.user.is_superuser %}
+        </tr>
 
-                <tr>
+        {% endif %}
 
-                    <!--<td>{{resultado.id}}</td>-->
-                    <td>{{resultado.Nombre}}</td>
-                    <td>{{resultado.Apellido}}</td>
-                    <td>{{resultado.Cedula}}</td>
-                    <td>{{resultado.Direccion}}</td>
-                    <td>{{resultado.Colegio_Electoral}}</td>
-                    <td>{{resultado.Centro_De_Votacion}}</td>
-                    <td>{{resultado.Sexo}}</td>
-                    <td>{{resultado.Telefono}}</td>
-                    <td>{{resultado.Email}}</td>
-                    <td>{{resultado.Edad}}</td>
-                    <td>{{resultado.Sector}}</td>
-                    <td>{{resultado.user}}</td>
+        {% endfor %}
 
-                </tr>
-                 
-                    {% elif obj.user == user %}
+        {% elif buscado %}
 
-                    <tr>
+        {% for resultado in buscado %}
 
-                      <!--<td>{{resultado.id}}</td>-->
-                      <td>{{resultado.Nombre}}</td>
-                      <td>{{resultado.Apellido}}</td>
-                      <td>{{resultado.Cedula}}</td>
-                      <td>{{resultado.Direccion}}</td>
-                      <td>{{resultado.Colegio_Electoral}}</td>
-                      <td>{{resultado.Centro_De_Votacion}}</td>
-                      <td>{{resultado.Sexo}}</td>
-                      <td>{{resultado.Telefono}}</td>
-                      <td>{{resultado.Email}}</td>
-                      <td>{{resultado.Edad}}</td>
-                      <td>{{resultado.Sector}}</td>
-                      <td>{{resultado.user}}</td>
-  
-                    </tr>
-                
-                    {% endif %}
+        {% if request.user.is_superuser %}
 
-                    {% endfor %}
+        <tr>
 
-                {% else %}
+          <!--<td>{{resultado.id}}</td>-->
+          <td>{{resultado.Nombre}}</td>
+          <td>{{resultado.Apellido}}</td>
+          <td>{{resultado.Cedula}}</td>
+          <td>{{resultado.Direccion}}</td>
+          <td>{{resultado.Colegio_Electoral}}</td>
+          <td>{{resultado.Centro_De_Votacion}}</td>
+          <td>{{resultado.Sexo}}</td>
+          <td>{{resultado.Telefono}}</td>
+          <td>{{resultado.Email}}</td>
+          <td>{{resultado.Edad}}</td>
+          <td>{{resultado.Sector}}</td>
+          <td>{{resultado.user}}</td>
 
-                <div class="alert alert-danger " role="alert">
-                    <button onclick="location.href='/registro/'" type="button" class="close" data-dismiss="alert"
-                        aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <P>Datos no encontrados o Todavia no introduces datos!!!!!</P>
-                </div>
+        </tr>
 
-                {% endif %}
+        {% elif obj.user == user %}
 
-          </form>
-         </tbody>
-        </form>
-    </table>
-  </div>
+        <tr>
 
-            <!--{% if object_list %}
+          <!--<td>{{resultado.id}}</td>-->
+          <td>{{resultado.Nombre}}</td>
+          <td>{{resultado.Apellido}}</td>
+          <td>{{resultado.Cedula}}</td>
+          <td>{{resultado.Direccion}}</td>
+          <td>{{resultado.Colegio_Electoral}}</td>
+          <td>{{resultado.Centro_De_Votacion}}</td>
+          <td>{{resultado.Sexo}}</td>
+          <td>{{resultado.Telefono}}</td>
+          <td>{{resultado.Email}}</td>
+          <td>{{resultado.Edad}}</td>
+          <td>{{resultado.Sector}}</td>
+          <td>{{resultado.user}}</td>
+
+        </tr>
+
+        {% endif %}
+
+        {% endfor %}
+
+        {% else %}
+
+        <div class="alert alert-danger " role="alert">
+          <button onclick="location.href='/registro/'" type="button" class="close" data-dismiss="alert"
+            aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <P>Datos no encontrados o Todavia no introduces datos!!!!!</P>
+        </div>
+
+        {% endif %}
+
+    </form>
+    </tbody>
+    </form>
+  </table>
+</div>
+
+<!--{% if object_list %}
             
               <nav style="padding-left: 580px;" aria-label="...">
                 <ul class="pagination pagination-lg">
@@ -169,6 +169,6 @@
             {% else %}
             
             {% endif %}-->
- 
+
 <!--------------------------------------------------- END Tabla--------------------------------------------------->
-{% endblock %}    
+{% endblock %}

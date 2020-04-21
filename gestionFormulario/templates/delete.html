@@ -6,19 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
 <body>
- 
-  <div class="main">
-      <form method="POST">
-        {% csrf_token %}
-       <div class="alert alert-danger" role="alert">
-          Estas Seguro que quieres eliminar estos datos ? 
-       </div>
-        
-        <input style="margin-top: 10px; margin-left: 15px;" class="btn btn-danger" type="submit" value="Si">
-        <a style="margin-top: 10px; margin-left: 15px;"  class="btn btn-warning" href="/registro/">Cancelar</a>
-    </form>
-  </div>
+
+    <div class="main">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="alert alert-danger" role="alert">
+                Estas Seguro que quieres eliminar estos datos ?
+            </div>
+
+            <input style="margin-top: 10px; margin-left: 15px;" class="btn btn-danger" type="submit" value="Si">
+            <a style="margin-top: 10px; margin-left: 15px;" class="btn btn-warning" href="/registro/">Cancelar</a>
+        </form>
+    </div>
 
 
 </body>
