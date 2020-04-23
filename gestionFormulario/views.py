@@ -79,7 +79,7 @@ def personas_datos(request):
     queryset = Personas.objects.all()
   
   # Paginacion permite agrupar por cantida y por paginas los datos.
-    paginator = Paginator(queryset, 10)
+    paginator = Paginator(queryset, 6)
     
     page_number = request.GET.get('page')
 
