@@ -33,9 +33,9 @@
       </thead>
       <tbody>
 
-        {% if object_list %}
+        {% if page_obj %}
 
-        {% for obj in object_list %}
+        {% for obj in page_obj %}
 
         <tr>
 
@@ -89,9 +89,9 @@
 
         {% for resultado in buscado %}
 
-        {% if request.user.is_superuser %}
-
         <tr>
+          
+          {% if request.user.is_superuser %}
 
           <!--<td>{{resultado.id}}</td>-->
           <td>{{resultado.Nombre}}</td>
@@ -109,7 +109,7 @@
 
         </tr>
 
-        {% elif obj.user == user %}
+        {% elif resultado.user == user %}
 
         <tr>
 
@@ -151,24 +151,46 @@
   </table>
 </div>
 
-<!--{% if object_list %}
-            
-              <nav style="padding-left: 580px;" aria-label="...">
-                <ul class="pagination pagination-lg">
-                  <li class="page-item active" aria-current="page">
-                    <span class="page-link">
-                      1
-                      <span class="sr-only">(current)</span>
-                    </span>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                </ul>
-              </nav>
-            
-            {% else %}
-            
-            {% endif %}-->
+
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+
+    {% if page_obj.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1" aria-disabled="true">Previous</a>
+    </li>
+    {%else%}
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+    </li>
+    {% endif %}
+
+   {% for i in Paginator.page_range %}
+
+    
+    <li class="page-item {% if page_obj.number == i %} active {% endif %}">
+      <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+    </li>
+   {% endfor %}
+
+   {% if page_obj.has_next %}
+
+    <li class="page-item">
+      <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+    </li>
+
+   {%else%}
+
+    <li class="page-item disabled">
+      <a class="page-link" href="#">Next</a>
+    </li>
+
+   {% endif %}
+    
+  </ul>   
+</nav>
 
 <!--------------------------------------------------- END Tabla--------------------------------------------------->
 {% endblock %}

@@ -7,6 +7,7 @@ from .forms import PersonasForm
 from django.db import IntegrityError
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
+from django.core.paginator import Paginator 
 
 
 # Create your views here.
@@ -76,13 +77,25 @@ def date_in(request):
 def personas_datos(request):
 
     queryset = Personas.objects.all()
+  
+  # Paginacion permite agrupar por cantida y por paginas los datos.
+    paginator = Paginator(queryset, 10)
+    
+    page_number = request.GET.get('page')
+
+    page_obj = paginator.get_page(page_number)
 
     context = {
-        'object_list': queryset,
+        
+        'page_obj': page_obj,
+        'Paginator': paginator,
 
     }
+    print(context)
 
     return render(request, 'registro.html', context)
+    
+    
 
 # Permite mostrar los datos de los formularios buscados en la base de datos
 
@@ -94,7 +107,9 @@ def Looking_For_Person(request):
         persona = request.GET['prs']
 
         obj = Personas.objects.filter(
-            Q(Nombre__icontains=persona) | Q(Apellido__icontains=persona))
+            Q(Nombre__icontains=persona) |
+            Q(Apellido__icontains=persona)
+            )
 
         context = {
             'buscado': obj,
