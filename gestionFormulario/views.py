@@ -108,7 +108,10 @@ def Looking_For_Person(request):
 
         obj = Personas.objects.filter(
             Q(Nombre__icontains=persona) |
-            Q(Apellido__icontains=persona)
+            Q(Apellido__icontains=persona) |
+            Q(Sexo__icontains=persona) |
+            Q(Edad__icontains=persona) |
+            Q(CentroDeVotacion__icontains=persona) 
             )
 
         context = {

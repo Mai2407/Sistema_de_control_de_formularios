@@ -12,7 +12,7 @@ class Personas(models.Model):
     Cedula = models.CharField(max_length=50)
     Direccion = models.CharField(max_length=130)
     Colegio_Electoral = models.CharField(max_length=50)
-    Centro_De_Votacion = models.CharField(max_length=50)
+    CentroDeVotacion = models.CharField(max_length=50)
     Sexo = models.CharField(max_length=13)
     Telefono = models.CharField(max_length=30)
     Email = models.EmailField(max_length=50)

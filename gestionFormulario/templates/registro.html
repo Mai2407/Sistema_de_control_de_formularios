@@ -47,7 +47,7 @@
           <td>{{obj.Cedula}}</td>
           <td>{{obj.Direccion}}</td>
           <td>{{obj.Colegio_Electoral}}</td>
-          <td>{{obj.Centro_De_Votacion}}</td>
+          <td>{{obj.CentroDeVotacion}}</td>
           <td>{{obj.Sexo}}</td>
           <td>{{obj.Telefono}}</td>
           <td>{{obj.Email}}</td>
@@ -69,7 +69,7 @@
           <td>{{obj.Cedula}}</td>
           <td>{{obj.Direccion}}</td>
           <td>{{obj.Colegio_Electoral}}</td>
-          <td>{{obj.Centro_De_Votacion}}</td>
+          <td>{{obj.CentroDeVotacion}}</td>
           <td>{{obj.Sexo}}</td>
           <td>{{obj.Telefono}}</td>
           <td>{{obj.Email}}</td>
@@ -99,7 +99,7 @@
           <td>{{resultado.Cedula}}</td>
           <td>{{resultado.Direccion}}</td>
           <td>{{resultado.Colegio_Electoral}}</td>
-          <td>{{resultado.Centro_De_Votacion}}</td>
+          <td>{{resultado.CentroDeVotacion}}</td>
           <td>{{resultado.Sexo}}</td>
           <td>{{resultado.Telefono}}</td>
           <td>{{resultado.Email}}</td>
@@ -119,7 +119,7 @@
           <td>{{resultado.Cedula}}</td>
           <td>{{resultado.Direccion}}</td>
           <td>{{resultado.Colegio_Electoral}}</td>
-          <td>{{resultado.Centro_De_Votacion}}</td>
+          <td>{{resultado.CentroDeVotacion}}</td>
           <td>{{resultado.Sexo}}</td>
           <td>{{resultado.Telefono}}</td>
           <td>{{resultado.Email}}</td>
@@ -168,11 +168,11 @@
     {% endif %}
 
    {% for i in Paginator.page_range %}
-
     
     <li class="page-item {% if page_obj.number == i %} active {% endif %}">
       <a class="page-link" href="?page={{ i }}">{{ i }}</a>
     </li>
+
    {% endfor %}
 
    {% if page_obj.has_next %}
@@ -181,7 +181,7 @@
       <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
     </li>
 
-   {%else%}
+   {% else %}
 
     <li class="page-item disabled">
       <a class="page-link" href="#">Next</a>

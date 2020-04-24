@@ -13,7 +13,7 @@ class PersonasForm(forms.ModelForm):
             'Cedula',
             'Direccion',
             'Colegio_Electoral',
-            'Centro_De_Votacion',
+            'CentroDeVotacion',
             'Sexo',
             'Telefono',
             'Email',
