@@ -7,7 +7,7 @@ from .forms import PersonasForm
 from django.db import IntegrityError
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
-from django.core.paginator import Paginator 
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 # Create your views here.
@@ -111,9 +111,11 @@ def Looking_For_Person(request):
             Q(Apellido__icontains=persona) |
             Q(Sexo__icontains=persona) |
             Q(Edad__icontains=persona) |
-            Q(CentroDeVotacion__icontains=persona) 
+            Q(CentroDeVotacion__icontains=persona) |
+            Q(Colegio_Electoral__icontains=persona) |
+            Q(Sector__icontains=persona)
             )
-
+        
         context = {
             'buscado': obj,
             'query': persona,
