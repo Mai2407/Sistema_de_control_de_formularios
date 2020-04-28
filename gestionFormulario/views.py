@@ -98,8 +98,6 @@ def personas_datos(request):
     
 
 # Permite mostrar los datos de los formularios buscados en la base de datos
-
-
 def Looking_For_Person(request):
 
     if request.GET['prs']:
