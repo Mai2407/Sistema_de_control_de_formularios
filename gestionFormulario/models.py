@@ -21,4 +21,4 @@ class Personas(models.Model):
 
     def __str__(self):
 
-        return self.Nombre + "   " + (self.Apellido)
+        return self.Nombre + "   " + (self.Apellido) +  "  || " +  "Cedula:  " + (self.Cedula)

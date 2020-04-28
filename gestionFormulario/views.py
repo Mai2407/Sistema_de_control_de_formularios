@@ -12,9 +12,8 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 # Create your views here.
 
+
 # Para validar usuario y clave
-
-
 def my_view(request):
 
     username = request.POST['username']
